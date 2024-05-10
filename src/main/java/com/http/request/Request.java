@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class Request {
 
-    URI uri;
-    HttpClient client;
-    Builder builder;
+    private URI uri;
+    private HttpClient client;
+    private Builder builder;
 
     public static void main(String[] args) {
         Request r = new Request(args[0]);
@@ -41,7 +41,7 @@ public class Request {
         return this;
     }
 
-    public Map<String, Object> get() throws Exception {
+    public Response get() throws Exception {
         try {
 
             HttpRequest request = builder.GET()
@@ -50,7 +50,7 @@ public class Request {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("data", response.body());
             map.put("statusCode", response.statusCode());
-            return map;
+            return new Response(response.body(), response.statusCode());
         } catch (Exception e) {
             throw e;
         }
