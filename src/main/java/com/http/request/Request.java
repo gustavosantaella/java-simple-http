@@ -1,4 +1,4 @@
-package com.http;
+package com.http.request;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,6 +16,18 @@ public class Request {
     HttpClient client;
     Builder builder;
 
+    public static void main(String[] args) {
+        Request r = new Request(args[0]);
+
+        try {
+            System.out.println(r.get().toString());
+        } catch (Exception e) {
+            System.out.println("An error ocurred");
+            System.out.println(e.toString());
+        }
+
+    }
+
     public Request(String uri) {
         this.uri = URI.create(uri);
 
@@ -24,11 +36,11 @@ public class Request {
                 .newBuilder().uri(this.uri);
     }
 
-    public void setHeader(String key, String value) throws Exception, IOException, InterruptedException {
+    public void setHeader(String key, String value) throws Exception {
         builder.header(key, value);
     }
 
-    public Map<String, Object> get() throws Exception, IOException, InterruptedException {
+    public Map<String, Object> get() throws Exception {
         try {
 
             HttpRequest request = builder.GET()
@@ -43,7 +55,7 @@ public class Request {
         }
     }
 
-    public Map<String, Object> post(HashMap<String, Object> data) throws Exception, IOException, InterruptedException {
+    public Map<String, Object> post(HashMap<String, Object> data) throws Exception {
         try {
 
             HttpRequest request = builder.POST(BodyPublishers.ofString(data.toString()))
