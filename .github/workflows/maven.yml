@@ -26,8 +26,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: V${{ github.event.release.tag_name }} # Replace with the desired tag name
-          release_name: Release ${{ github.event.release.tag_name }} # Replace with the desired release name
+          tag_name: V${{ github.ref_name }} # Replace with the desired tag name
+          release_name: Release ${{ github.ref_name }} # Replace with the desired release name
           draft: false
           prerelease: false
       - name: Upload Release Asset
