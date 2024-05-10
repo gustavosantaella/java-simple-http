@@ -40,4 +40,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/http.jar
           asset_name: "Binary"
-          tag: ${{ github.ref }}
+          tag_name: "Binary ${{ github.ref }}"
+          release_name: "V${{ github.ref }}"
+          upload_url: "target/http.jar"
