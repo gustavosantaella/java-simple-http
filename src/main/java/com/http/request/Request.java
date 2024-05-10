@@ -36,8 +36,9 @@ public class Request {
                 .newBuilder().uri(this.uri);
     }
 
-    public void setHeader(String key, String value) throws Exception {
+    public Request setHeader(String key, String value) throws Exception {
         builder.header(key, value);
+        return this;
     }
 
     public Map<String, Object> get() throws Exception {
