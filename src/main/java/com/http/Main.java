@@ -3,13 +3,14 @@ package com.http;
 import java.util.Map;
 
 import com.http.request.Request;
+import com.http.request.Response;
 
 public class Main {
     public static void main(String[] args) {
         Request req = new Request(args[0]);
 
         try {
-            Map<String, Object> data = req.get();
+            Response data = req.get();
             System.out.println(data);
         } catch (Exception e) {
             // Handle the exception
