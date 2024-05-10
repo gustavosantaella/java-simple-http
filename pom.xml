@@ -14,4 +14,8 @@
     </properties>
     
 
+    <build>
+      <finalName>http</finalName>
+    </build>
+
 </project>
